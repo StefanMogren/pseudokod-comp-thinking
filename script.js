@@ -2,6 +2,12 @@
 // Skriv din pseudokod innanför nedanstående kommentarsblock
 /*
 
+SET variabel summa = INPUT nummer från användaren
+SET variabel antalVänner = INPUT nummer från användaren
+SET variabel dricks = INPUT nummer från användaren 
+
+SET variabel totalKostnad = summa + (summa multiplicerat med dricks)
+PRINT "Varje person ska betala " (totalKostnad delat med antalVänner) "kr"
 
 */
 
@@ -19,6 +25,14 @@ function play()
 
 
 end function
+
+
+
+
+
+
+
+
 
 function isOneLetterApart(wordOne, wordTwo)
     SET variabel diffCount till 0;

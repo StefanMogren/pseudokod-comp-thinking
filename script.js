@@ -23,23 +23,39 @@ function play()
     SET variabel startOrd till "FOUR";
     SET variabel slutordOrd till "FIVE";
 
+    WHILE startOrd !== slutOrd
+        PRINT "Du har ordet " startOrd
+        PRINT "Du ska nå ordet " slutOrd
+        PRINT "Vilket blir ditt nästa ord?"
+        SET variabel nästaOrd = INPUT text från användare
 
-end function
+        IF ( isOneLetterApart( startOrd, nästaOrd ) ) // Kör funktionen isOneLetterApart med värdena från startOrd och nästaOrd. Om funktionen returnerar sant...
+            IF ( nästaOrd finns inuti ordbok )
+                startOrd = nästaOrd
+            ELSE
+                PRINT "Ditt ord finns inte i ordlistan. Försök igen."
+            END IF
+        ELSE
+            PRINT "Du har försökt ändra mer än en bokstav. Försök igen."
+        END IF
+    END WHILE
+    PRINT "Du har lyckats nå ordet! Grattis!"
 
-
-
-
-
-
-
+END function
 
 
 function isOneLetterApart(wordOne, wordTwo)
     SET variabel diffCount till 0;
 
+    FOR (SET variabel i = 1; så länge i <= längden på ordet wordOne, kör koden under; öka i med 1 efter varje loop)
+        IF bokstav på plats `i` i wordOne !== bokstav på plats `i` i wordTwo
+            öka värdet på diffCount med 1
+        END IF
+    END FOR
+
     // Här behöver du skriva koden för din funktion
 
     return diffCount === 1; // returnerar sant om endast en bokstav ändrats, annars falskt
-end function
+END function
 
 */

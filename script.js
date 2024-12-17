@@ -36,13 +36,13 @@ FUNCTION play()
                 IF ( inputOrd finns inuti ordbok )
                     startOrd = inputOrd
                 ELSE
-                    PRINT "Ditt ord finns inte i ordlistan. Försök igen."
+                    PRINT "Ditt ord finns inte i ordboken. Försök igen."
                 END IF
             ELSE
                 PRINT "Du får bara ändra en bokstav. Försök igen."
             END IF
         ELSE
-            PRINT "Du måste välja ett ord som är " + längden på ordet i startOrd + " bokstäver långt"
+            PRINT "Du måste välja ett ord som är " + längden på ordet i startOrd + " bokstäver långt. Försök igen."
         END IF
     END WHILE
 

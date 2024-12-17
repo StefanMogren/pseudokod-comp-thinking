@@ -18,37 +18,45 @@ PRINT "Varje person ska betala " (totalKostnad delat med antalVänner) "kr"
 
 play();
 
-function play()
+FUNCTION play()
     SET variabel ordbok = [FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE]; // Innehåller ALLA ord i det engelska språket
     SET variabel startOrd till "FOUR";
     SET variabel slutordOrd till "FIVE";
+    SET variabel antalFörsök till 0
 
     WHILE startOrd !== slutOrd
         PRINT "Du har ordet " startOrd
         PRINT "Du ska nå ordet " slutOrd
         PRINT "Vilket blir ditt nästa ord?"
-        SET variabel nästaOrd = INPUT text från användare
+        SET variabel inputOrd = INPUT text från användare
+        antalFörsök ökas med 1          // Ökas innan kontrollerna under körs. Betyder att även ej godkända försök registreras
 
-        IF ( isOneLetterApart( startOrd, nästaOrd ) ) // Kör funktionen isOneLetterApart med värdena från startOrd och nästaOrd. Om funktionen returnerar sant...
-            IF ( nästaOrd finns inuti ordbok )
-                startOrd = nästaOrd
+        IF (längden på ordet i startOrd === längden på ordet i inputOrd)
+            IF ( isOneLetterApart(startOrd, inputOrd) ) // Kör funktionen isOneLetterApart med värdena från startOrd och inputOrd. Om funktionen returnerar sant...
+                IF ( inputOrd finns inuti ordbok )
+                    startOrd = inputOrd
+                ELSE
+                    PRINT "Ditt ord finns inte i ordlistan. Försök igen."
+                END IF
             ELSE
-                PRINT "Ditt ord finns inte i ordlistan. Försök igen."
+                PRINT "Du får bara ändra en bokstav. Försök igen."
             END IF
         ELSE
-            PRINT "Du har försökt ändra mer än en bokstav. Försök igen."
+            PRINT "Du måste välja ett ord som är " + längden på ordet i startOrd + " bokstäver långt"
         END IF
     END WHILE
+
     PRINT "Du har lyckats nå ordet! Grattis!"
+    PRINT "Det tog dig " + antalFörsök + " försök att nå ordet."
 
 END function
 
 
-function isOneLetterApart(wordOne, wordTwo)
+FUNCTION isOneLetterApart(wordOne, wordTwo)
     SET variabel diffCount till 0;
 
-    FOR (SET variabel i = 1; så länge i <= längden på ordet wordOne, kör koden under; öka i med 1 efter varje loop)
-        IF bokstav på plats `i` i wordOne !== bokstav på plats `i` i wordTwo
+    FOR (SET variabel i = 0; så länge i < längden på ordet i wordOne, kör koden under; öka i med 1 efter varje loop)
+        IF bokstav på index plats `i` i wordOne !== bokstav på index plats `i` i wordTwo
             öka värdet på diffCount med 1
         END IF
     END FOR

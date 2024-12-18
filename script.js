@@ -7,7 +7,7 @@ SET variabel antalVänner = INPUT nummer från användaren
 SET variabel dricks = INPUT nummer från användaren 
 
 SET variabel totalKostnad = summa + (summa multiplicerat med dricks)
-PRINT "Varje person ska betala " (totalKostnad delat med antalVänner) "kr"
+PRINT "Varje person ska betala " (totalKostnad delat med antalVänner) " kr"
 
 */
 
@@ -21,7 +21,7 @@ play();
 FUNCTION play()
     SET variabel ordbok = [FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE]; // Innehåller ALLA ord i det engelska språket
     SET variabel startOrd till "FOUR";
-    SET variabel slutordOrd till "FIVE";
+    SET variabel slutOrd till "FIVE";
     SET variabel antalFörsök till 0
 
     WHILE startOrd !== slutOrd
